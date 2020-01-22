@@ -114,7 +114,7 @@ if ($result->num_rows > 0)
  }
 }
 ?>
-        <a class="add-button" href="post.php"><i class="fa fa-th-list"></i> Post Ads</a></div>
+        <a class="add-button" href="tasklist/task.php"><i class="fa fa-th-list"></i> Post Task</a></div>
       </div>
     </div>
   </div>
@@ -151,7 +151,7 @@ if ($result->num_rows > 0)
                 <a href="message_list.php"><i class="fa fa-comment-o"></i> Messages <span> 0</span></a>
               </li>
               <li>
-                <a href="#"><i class="fa fa-bookmark-o"></i>  Posted Ads <span><?=$count1?></span></a>
+                <a href="inmsg/tasklist/task.php"><i class="fa fa-bookmark-o"></i>  Posted Task <span><?=$count1?></span></a>
               </li>
               <li>
                 <a href="logout.php"><i class="fa fa-cog"></i>  Logout</a>
