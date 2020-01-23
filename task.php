@@ -71,7 +71,8 @@ if ($result->num_rows > 0)
 			<p> <?php echo $errors; ?> </p>
 		<?php 
 	} ?>
-		<input type="text" name="task" class="task_input">
+
+	<textarea name="task" class="task_input" rows="4" cols="50"> </textarea>
 		<button type="submit" name="submit" id="add_btn" class="add_btn">Add Task</button>
 	</form>
 
@@ -100,8 +101,10 @@ if ($result->num_rows > 0)
 				</tr>
 			<?php $i++; }
 			 ?>	
+
 		</tbody>
 	</table>
-
+	<br>
+ <a href=profile.php>GO TO profile</a> 
 </body>
 </html>

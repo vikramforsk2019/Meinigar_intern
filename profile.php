@@ -114,7 +114,7 @@ if ($result->num_rows > 0)
  }
 }
 ?>
-        <a class="add-button" href="tasklist/task.php"><i class="fa fa-th-list"></i> Post Task</a></div>
+        <a class="add-button" href="task.php"><i class="fa fa-th-list"></i> Post Task</a></div>
       </div>
     </div>
   </div>
@@ -151,7 +151,7 @@ if ($result->num_rows > 0)
                 <a href="message_list.php"><i class="fa fa-comment-o"></i> Messages <span> 0</span></a>
               </li>
               <li>
-                <a href="inmsg/tasklist/task.php"><i class="fa fa-bookmark-o"></i>  Posted Task <span><?=$count1?></span></a>
+                <a href="task.php"><i class="fa fa-bookmark-o"></i>  Posted Task <span><?=$count1?></span></a>
               </li>
               <li>
                 <a href="logout.php"><i class="fa fa-cog"></i>  Logout</a>
@@ -166,13 +166,13 @@ if ($result->num_rows > 0)
       <div class="col-md-8 offset-md-1 col-lg-8 offset-lg-0">
         <!-- Recently Favorited -->
         <div class="widget dashboard-container my-adslist">
-          <h3 class="widget-header"> My Ads</h3>
+          <h3 class="widget-header"> My Tasks</h3>
           <table class="table table-responsive product-dashboard-table">
             <thead>
               <tr>
-                <th>Image</th>
-                <th>Product Title</th>
-                <th class="text-center">Category</th>
+                <th>Task NO</th>
+                <th>Tasks</th>
+                <th class="text-center">Rating</th>
                 <th class="text-center">Action</th>
               </tr>
             </thead>
@@ -186,32 +186,19 @@ if ($result->num_rows > 0)
     while($row = $result->fetch_assoc())
  {
         $pid=$row["pid"];
-
  }
 }
 
-$sql = "select postid from post where pid='$pid'";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) 
-{
-    while($row = $result->fetch_assoc())
- {
-        $postid=$row["postid"];
 
-
-$sql1 = "select post.pathh,post.postid,post.title,post.catagary,post.img1,post.date,near.nearname from post  inner join near on near.nearid= post.nearid and postid='$postid'";
+$sql1 = "select * from tasks where pid='$pid'";
 $result1 = $conn->query($sql1);
 if ($result1->num_rows > 0) 
 {
     while($row = $result1->fetch_assoc())
  { 
-        $pathh=$row["pathh"];
-$postid=$row["postid"];
-$title=$row["title"];
-$catagary=$row["catagary"];
-$img=$row["img1"];
-$date=$row["date"];
-$nearname=$row["nearname"];
+        $taskid=$row["taskid"];
+$task=$row["task"];
+$rating=5;
 ?>
 
        
@@ -220,30 +207,30 @@ $nearname=$row["nearname"];
             
 
                 <td class="product-thumb">
-                  <img width="80px" height="80px" src="postpic/<?=$pathh?><?=$img?>" alt="image description"></td>
+                  <img width="80px" height="80px" src="postpic/<?=$pathh?><?=$img?>" alt="<?=$taskid?>"></td>
                    <td class="product-details">
-                  <h3 class="title"><?=$title?></h3>
-                  <span class="add-id"><strong>Ad ID:</strong><?=$postid?></span>
+                  <h3 class="title"><?=$task?></h3>
+                  <span class="add-id"><strong>Task ID:</strong><?=$taskid?></span>
                   <span><strong>Posted on: </strong><time>20/2/2019</time> </span>
                   <span class="status active"><strong>Status</strong> Active</span>
-                  <span class="location"><strong>Location</strong><?=$nearname?></span>
+                  <span class="location"><strong>Location</strong><?=$taskid?></span>
                 </td>
-                <td class="product-category"><span class="categories"><?=$catagary?></span></td>
+                <td class="product-category"><span class="categories"><?=$rating?></span></td>
                 <td class="action" data-title="Action">
                   <div class="">
                     <ul class="list-inline justify-content-center">
                       <li class="list-inline-item">
-                        <a data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="view" href="">
+                        <a data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="view" href="task.php?kddsfwefwcwefvwvefwe=<?=$taskid?>">
                           <i class="fa fa-eye"></i>
                         </a>   
                       </li>
                       <li class="list-inline-item">
-                        <a class="edit" href="editpost.php?kddsfwefwcwefvwvefwe=<?=$postid?>">
+                        <a class="edit" href="task.php?kddsfwefwcwefvwvefwe=<?=$taskid?>">
                           <i class="fa fa-pencil" ></i>
                         </a>   
                       </li>
                       <li class="list-inline-item">
-                        <a class="delete" href="deletepost.php?kddsfwefwcwefvwvefwe=<?=$postid?>" onclick = "return getConfirmation('are you sure for delete');" >
+                        <a class="delete" href="task.php?kddsfwefwcwefvwvefwe=<?=$taskid?>" onclick = "return getConfirmation('are you sure for delete');" >
                            <i class="fa fa-trash"></i>
                         </a>
                       </li>
@@ -257,8 +244,7 @@ $nearname=$row["nearname"];
  }
 }
 
- }
-}
+
 ?>  
 
       </table>
@@ -278,7 +264,7 @@ $nearname=$row["nearname"];
         <div class="col-sm-6 col-12">
           <!-- Copyright -->
           <div class="copyright">
-            <p>Copyright © 2019. All Rights Reserved roomseeker.in</p>
+            <p>Copyright © 2019. All Rights Reserved ram vik </p>
           </div>
         </div>
         <div class="col-sm-6 col-12">
