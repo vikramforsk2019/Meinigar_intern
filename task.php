@@ -87,9 +87,19 @@ if ($result->num_rows > 0)
 		</thead>
 
 		<tbody>
-			<?php $i = 1; 
-			while ($row = mysqli_fetch_array($tasks))
-			 { ?>
+
+			<?php
+			$i =1;
+			$sql = "SELECT * FROM tasks where pid='$pp1'";
+$result = $conn->query($sql);
+//$k1="dpgakf9wm24imt1udiyr/1.jpg";
+if ($result->num_rows > 0) 
+{
+    // output data of each row
+    while($row = $result->fetch_assoc())
+    {  
+   
+?>
 				<tr>
 					<td> <?php echo $i; ?> </td>
 					<td class="task">
@@ -99,7 +109,10 @@ if ($result->num_rows > 0)
 						<a href="task.php?del_task=<?php echo $row['taskid'] //take the task id ?>">x</a> 
 					</td>
 				</tr>
-			<?php $i++; }
+			<?php
+			 $i+=1; 
+			    }
+}
 			 ?>	
 
 		</tbody>
